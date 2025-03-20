@@ -9,7 +9,6 @@ import { PackageIcon, TrolleyIcon } from "@sanity/icons";
 
 function Header() {
   const { user } = useUser();
-  console.log(user);
 
   return (
     <header className="flex flex-wrap justify-between items-center gap-4 p-4 py-2">
