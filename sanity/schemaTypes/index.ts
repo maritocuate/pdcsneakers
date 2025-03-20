@@ -5,7 +5,15 @@ import { categoryType } from "./categoryType";
 import { postType } from "./postType";
 import { authorType } from "./authorType";
 import { productType } from "./productTypes";
+import { orderType } from "./orderType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, postType, authorType, productType],
+  types: [
+    orderType,
+    blockContentType,
+    categoryType,
+    postType,
+    authorType,
+    productType,
+  ],
 };
