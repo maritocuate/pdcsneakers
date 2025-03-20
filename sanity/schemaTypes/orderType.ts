@@ -106,7 +106,7 @@ export const orderType = defineType({
       const { orderNumber, status, products } = selection;
       return {
         title: `${orderNumber}`,
-        subtitle: `${status} - ${products.length} products`,
+        subtitle: `${status} - ${products.length || 0} products`,
       };
     },
   },
