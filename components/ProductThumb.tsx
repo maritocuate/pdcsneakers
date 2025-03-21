@@ -23,7 +23,7 @@ function ProductThumb({ product }: { product: ProductTypes }) {
       )}
 
       {isOutOfStock && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-white">
+        <div className="inset-0 flex items-center justify-center bg-black/50 text-white">
           Out of Stock
         </div>
       )}
