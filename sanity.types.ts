@@ -347,13 +347,61 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/products/getAllProducts.ts
 // Variable: ALL_PRODUCTS_QUERY
-// Query: *[_type == "product"] | order(name asc)
-export type ALL_PRODUCTS_QUERYResult = Array<never>;
+// Query: *[_type == "productTypes"] | order(name asc)
+export type ALL_PRODUCTS_QUERYResult = Array<{
+  _id: string;
+  _type: "productTypes";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  slug?: Slug;
+  description?: string;
+  price?: number;
+  category?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  stock?: number;
+}>;
+
+// Source: ./sanity/lib/sales/getActivateSaleByCouponCode.ts
+// Variable: ACTIVE_SALE_BY_COUPON_QUERY
+// Query: *[_type == "salesType"        && isActive == true        && couponCode == $couponCode        ] | order(validFrom desc) [0]
+export type ACTIVE_SALE_BY_COUPON_QUERYResult = {
+  _id: string;
+  _type: "salesType";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  discountAmount?: number;
+  couponCode?: string;
+  validForm?: string;
+  validUntil?: string;
+  isActive?: boolean;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"product\"] | order(name asc)": ALL_PRODUCTS_QUERYResult;
+    "*[_type == \"productTypes\"] | order(name asc)": ALL_PRODUCTS_QUERYResult;
+    "\n        *[_type == \"salesType\"\n        && isActive == true\n        && couponCode == $couponCode\n        ] | order(validFrom desc) [0]\n    ": ACTIVE_SALE_BY_COUPON_QUERYResult;
   }
 }
