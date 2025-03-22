@@ -10,7 +10,6 @@ function ProductsView({ products }: ProductViewProps) {
       <div>
         <div>
           <ProductsGrid products={products} />
-          <hr className="w-1/2" />
         </div>
       </div>
     </div>
