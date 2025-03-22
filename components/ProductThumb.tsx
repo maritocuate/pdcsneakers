@@ -8,7 +8,7 @@ function ProductThumb({ product }: { product: ProductTypes }) {
 
   return (
     <Link
-      href={`/products/${product.slug?.current}`}
+      href={`/product/${product.slug?.current}`}
       className={`flex flex-col ${isOutOfStock ? "opacity-50" : ""}`}
     >
       {product.image && (
