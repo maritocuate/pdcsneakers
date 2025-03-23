@@ -67,7 +67,7 @@ export function CategorySelectorComponent({
                   value={category.title}
                   onSelect={() => {
                     setValue(value === category._id ? "" : category._id);
-                    router.push(`/categories/${category.slug?.current}`);
+                    router.push(`/category/${category.slug?.current}`);
                     setOpen(false);
                   }}
                 >
