@@ -427,6 +427,40 @@ export type PRODUCT_BY_SLUG_QUERYResult = {
   stock?: number;
 } | null;
 
+// Source: ./sanity/lib/products/getProductsByCategory.ts
+// Variable: PRODUCTS_BY_CATEGORY_QUERY
+// Query: *[        _type == "productTypes"        && references(*[_type == "category" && slug.current == $slug]._id)    ] | order(name asc) [0]
+export type PRODUCTS_BY_CATEGORY_QUERYResult = {
+  _id: string;
+  _type: "productTypes";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  slug?: Slug;
+  description?: string;
+  price?: number;
+  category?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  stock?: number;
+} | null;
+
 // Source: ./sanity/lib/products/searchProductsByName.ts
 // Variable: PRODUCT_SEARCH_QUERY
 // Query: *[_type == "productTypes"    && name match $name    ] | order(name asc)
@@ -486,6 +520,7 @@ declare module "@sanity/client" {
     "\n    *[_type == \"category\"] | order(name asc)\n  ": ALL_CATEGORIES_QUERYResult;
     "*[_type == \"productTypes\"] | order(name asc)": ALL_PRODUCTS_QUERYResult;
     "\n    *[_type == \"productTypes\"\n    && slug.current == $slug\n    ] | order(name asc) [0]\n  ": PRODUCT_BY_SLUG_QUERYResult;
+    "\n    *[\n        _type == \"productTypes\"\n        && references(*[_type == \"category\" && slug.current == $slug]._id)\n    ] | order(name asc) [0]\n  ": PRODUCTS_BY_CATEGORY_QUERYResult;
     "\n    *[_type == \"productTypes\"\n    && name match $name\n    ] | order(name asc)\n  ": PRODUCT_SEARCH_QUERYResult;
     "\n        *[_type == \"salesType\"\n        && isActive == true\n        && couponCode == $couponCode\n        ] | order(validFrom desc) [0]\n    ": ACTIVE_SALE_BY_COUPON_QUERYResult;
   }
