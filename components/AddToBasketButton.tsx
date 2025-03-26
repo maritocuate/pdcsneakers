@@ -27,6 +27,7 @@ function AddToBasketButton({ product, disabled }: AddToBasketButtonProps) {
         size="icon"
         className="rounded-full w-8 h-8"
         onClick={() => removeItem(product._id)}
+        disabled={disabled}
       >
         -
       </Button>
@@ -36,6 +37,7 @@ function AddToBasketButton({ product, disabled }: AddToBasketButtonProps) {
         size="icon"
         className="rounded-full w-8 h-8"
         onClick={() => addItem(product)}
+        disabled={disabled}
       >
         +
       </Button>
