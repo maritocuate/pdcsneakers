@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PDCSneakers 🏃‍♂️
 
-## Getting Started
+PDCSneakers is a modern e-commerce platform specialized in sports sneakers, built with cutting-edge technologies.
 
-First, run the development server:
+## 🚀 Main Technologies
+
+- **Next.js 15** - React framework for production
+- **Sanity CMS** - Headless content management system
+- **Clerk** - Authentication and user management
+- **TailwindCSS** - Utility-first CSS framework
+- **TypeScript** - Typed JavaScript superset
+- **Zustand** - State management
+- **Framer Motion** - Animations
+- **Radix UI** - Accessible UI components
+
+## 🛠️ Prerequisites
+
+- Node.js (LTS version recommended)
+- npm or yarn
+- Sanity account
+- Clerk account
+
+## 📦 Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/maritocuate/pdcsneakers.git
+cd pdcsneakers
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+# or
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Set up environment variables:
+   Create a `.env.local` file in the project root with the following variables:
 
-## Learn More
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
+CLERK_SECRET_KEY=your_clerk_secret
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_TOKEN=your_sanity_token
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Available Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build the application for production
+- `npm run start` - Start production server
+- `npm run lint` - Run linter
+- `npm run typegen` - Generate TypeScript types for Sanity schema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📚 Project Structure
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+pdcsneakers/
+├── app/                 # Next.js routes and pages
+├── components/          # Reusable components
+├── lib/                 # Utilities and configurations
+├── public/             # Static files
+├── sanity/             # Sanity configuration and schemas
+└── types/              # TypeScript type definitions
+```
